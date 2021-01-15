@@ -22,7 +22,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --es-module-specifier-resolution=node src/index babel-node src",
+    "start": "nodemon --exec babel-node src",
     "lint": "eslint src/**/*.js",
     "lint:fix": "eslint src/**/*.js --fix",
     "transpile": "babel-node ./src --out-dir dist"
