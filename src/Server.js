@@ -1,5 +1,6 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
+import { createServer } from 'http';
 import Schema from './module';
 
 class Server {
@@ -16,6 +17,8 @@ class Server {
 
   setupApollo(schema) {
     this.server = new ApolloServer(schema);
+    this.httpServer = createServer(this.app);
+    this.server.installSubscriptionHandlers(this.httpServer);
   }
 
   setupRoutes() {
@@ -27,8 +30,8 @@ class Server {
   }
 
   run() {
-    const { app, config: { port } } = this;
-    app.listen(port, (err) => {
+    const { config: { port } } = this;
+    this.httpServer.listen(port, (err) => {
       if (err) {
         console.log(err);
       }

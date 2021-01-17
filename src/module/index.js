@@ -1,8 +1,7 @@
 import { fileLoader, mergeTypes } from 'merge-graphql-schemas';
 import path from 'path';
 import { getMyProfile } from './user';
-import { user } from './trainee';
-import mutations from './trainee/mutation';
+import { user, mutations, subcriptions } from './trainee';
 
 const dirname = path.resolve();
 
@@ -17,6 +16,7 @@ export default {
       ...user,
     },
     Mutation: mutations,
+    Subscription: subcriptions,
   },
   typeDefs,
 };
