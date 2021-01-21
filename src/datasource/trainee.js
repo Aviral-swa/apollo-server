@@ -4,19 +4,27 @@ import { configuration } from '../config';
 class UserApi extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = `${configuration.service_url}/user`;
+    this.baseURL = `${configuration.service_url}/trainee`;
   }
 
   willSendRequest(request) {
     request.headers.set('Authorization', this.context.token);
   }
 
-  getMe() {
-    return this.get('/me');
+  getAll() {
+    return this.get('');
   }
 
-  loginUser(payload) {
-    return this.post('/login', payload);
+  create(payload) {
+    return this.post('', payload);
+  }
+
+  update(payload) {
+    return this.put('', payload);
+  }
+
+  deleteTrainee(id) {
+    return this.delete(`/${id}`);
   }
 }
 

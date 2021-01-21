@@ -2,7 +2,7 @@ import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { createServer } from 'http';
 import Schema from './module';
-import { UserApi } from './datasource';
+import { UserApi, TraineeApi } from './datasource';
 
 class Server {
   constructor(config) {
@@ -21,7 +21,16 @@ class Server {
       ...schema,
       dataSources: () => ({
         userApi: new UserApi(),
+        traineeApi: new TraineeApi(),
       }),
+      context: ({ req }) => {
+        if (req) {
+          return {
+            token: req.headers.authorization,
+          };
+        }
+        return {};
+      },
     });
     this.httpServer = createServer(this.app);
     this.server.installSubscriptionHandlers(this.httpServer);

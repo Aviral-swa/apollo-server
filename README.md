@@ -26,3 +26,16 @@ With GraphQL, the user is able to make a single call to fetch the required infor
 
 ### What are resolvers?
 - A resolver is a function that resolves a value for a type or field in a schema. Resolvers can return objects or scalars like Strings, Numbers, Booleans, etc. If an Object is returned, execution continues to the next child field. If a scalar is returned execution completes.
+
+## Packages used.
+- ### apollo-datasource-rest
+
+  - Used to access dataSources which helps to connect actual Api endpoints by providing *post*, *put*, *create*, *delete* and other request types.
+
+- ### apollo-server-express
+
+  - Used to setup the apollo server by provinding various methods & classes like ApolloServer which is used to create the apollo server
+
+- ### merge-graphql-schemas
+
+  - This package is used to make typeDefs and resolvers in a single object which are spread across the project and then ultimatly pass into the apollo server insrance
