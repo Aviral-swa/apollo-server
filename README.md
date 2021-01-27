@@ -1,16 +1,16 @@
 # **Apollo-Server**
 
 ### What is GraphQL?
-- GraphQL is a syntax that describes how to ask for data, and is generally used to load data from a server to a client. GraphQL has three main characteristics:
+- GraphQL is a punctuation that portrays how to request information, and is for the most part used to stack information from a server to a client. GraphQL has three fundamental qualities:
 
-    - It lets the client specify exactly what data it needs.
-    - It makes it easier to aggregate data from multiple sources.
+    - It allows the client to determine precisely what information it needs.
+    - It makes it simpler to total information from numerous sources.
     - It uses a type system to describe data.
 
 With GraphQL, the user is able to make a single call to fetch the required information rather than to construct several REST requests to fetch the same.
 
 ### What is Rest API?
-- REST determines how the API looks like. It stands for “Representational State Transfer”. It is a set of rules that developers follow when they create their API. One of these rules states that you should be able to get a piece of data (called a resource) when you link to a specific URL.
+- REST decides how the API resembles. It means "Representational State Transfer". It is a bunch of rules that developers follow when they make their API. One of these guidelines expresses that you ought to have the option to get a piece of information (called an resource) when you connect to a particular URL.
 
 ### Why use GraphQL?
 - GraphQL lets you ask for what you want in a single query, saving bandwidth and reducing waterfall requests. It also enables clients to request their own unique data specifications.

@@ -5,3 +5,25 @@ input createUserInput {
   role: String
 }
 
+input updateUserInput {
+  id: ID!
+  name: String
+  role: String
+}
+
+input getAllOptions {
+  skip: Int
+  limit: Int
+}
+
+type userData {
+  total: Int
+  showing: Int
+  traineesList: [User]
+}
+
+type getAllUsers {
+  message: String
+  data: userData
+  status: String
+}

@@ -2,7 +2,6 @@
   "name": "apollo-server",
   "version": "1.0.0",
   "description": "### What is GraphQL? - GraphQL is a syntax that describes how to ask for data, and is generally used to load data from a server to a client. GraphQL has three main characteristics:",
-  "type": "module",
   "dependencies": {
     "apollo-datasource-rest": "^0.9.7",
     "apollo-server-express": "^2.19.1",
@@ -27,11 +26,6 @@
     "lint": "eslint src/**/*.js",
     "lint:fix": "eslint src/**/*.js --fix",
     "transpile": "babel-node ./src --out-dir dist"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
   },
   "repository": {
     "type": "git",

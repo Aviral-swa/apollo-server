@@ -18,7 +18,7 @@ export default {
   },
   updateTrainee: async (parent, args, context) => {
     const { dataSources: { traineeApi } } = context;
-    const { id, name, email } = args;
+    const { user: { id, name, email } } = args;
     const response = await traineeApi.update({
       originalId: id,
       dataToUpdate: {

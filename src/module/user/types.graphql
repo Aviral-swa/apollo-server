@@ -3,9 +3,23 @@ type User {
   name: String!
   email: String!
   role: String
+  originalId: ID!
+  createdAt: String!
 }
 
 input Payload {
   email: String!
   password: String!
+}
+
+type Tdata {
+  generated_token: String!
+}
+
+type LoginResponse {
+  message: String
+  data: Tdata
+  error: String
+  timestamp: String
+  status: String
 }
