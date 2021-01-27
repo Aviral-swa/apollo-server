@@ -8,7 +8,7 @@ input createUserInput {
 input updateUserInput {
   id: ID!
   name: String
-  role: String
+  email: String
 }
 
 input getAllOptions {
@@ -25,5 +25,11 @@ type userData {
 type getAllUsers {
   message: String
   data: userData
+  status: String
+}
+
+type trainee {
+  message: String
+  data: User
   status: String
 }

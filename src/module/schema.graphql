@@ -4,9 +4,9 @@ type Query {
 }
 
 type Mutation {
-  createTrainee(user: createUserInput): User!
-  updateTrainee(user: updateUserInput): User!
-  deleteTrainee(id:ID!): String!
+  createTrainee(user: createUserInput): trainee!
+  updateTrainee(user: updateUserInput): trainee!
+  deleteTrainee(id:ID!): trainee!
   loginUser(payload: Payload!): LoginResponse!
 }
 
