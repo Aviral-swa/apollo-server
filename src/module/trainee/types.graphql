@@ -33,3 +33,9 @@ type trainee {
   data: User
   status: String
 }
+
+type deletedTrainee {
+  message: String
+  data: String
+  status: String
+}

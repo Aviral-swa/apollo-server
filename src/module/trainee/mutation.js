@@ -14,7 +14,7 @@ export default {
       const response = await traineeApi.create({
         name, email, role, password,
       });
-      pubsub.publish(TRAINEE_ADDED, { traineeAdded: response.data });
+      pubsub.publish(TRAINEE_ADDED, { traineeAdded: response });
       return response;
     } catch (err) {
       if (!err.extensions) {
@@ -37,7 +37,7 @@ export default {
           email,
         },
       });
-      pubsub.publish(TRAINEE_UPDATED, { traineeUpdated: response.data });
+      pubsub.publish(TRAINEE_UPDATED, { traineeUpdated: response });
       return response;
     } catch (err) {
       if (!err.extensions) {
@@ -54,7 +54,7 @@ export default {
       const { dataSources: { traineeApi } } = context;
       const { id } = args;
       const deletedTrainee = await traineeApi.deleteTrainee(id);
-      pubsub.publish(TRAINEE_DELETED, { traineeDeleted: deletedTrainee.message });
+      pubsub.publish(TRAINEE_DELETED, { traineeDeleted: deletedTrainee });
       return deletedTrainee;
     } catch (err) {
       if (!err.extensions) {

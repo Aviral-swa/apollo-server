@@ -1,9 +1,9 @@
 import constants from '../../lib/constants';
 
 export default {
-  loginUser: async (parent, args, context) => {
+  loginUser: async (parent, args, { dataSources }) => {
     try {
-      const { dataSources: { userApi } } = context;
+      const { userApi } = dataSources;
       const { payload: { email, password } } = args;
       const response = await userApi.loginUser({ email, password });
       return response;
