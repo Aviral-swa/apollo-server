@@ -11,13 +11,13 @@ input Payload {
   password: String!
 }
 
-type Tdata {
+type TokenData {
   generated_token: String!
 }
 
 type LoginResponse {
   message: String
-  data: Tdata
+  data: TokenData
   error: String
   timestamp: String
   status: String
