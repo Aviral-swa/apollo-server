@@ -4,4 +4,5 @@ export default {
     TRAINEE_UPDATED: 'traineeUpdated',
     TRAINEE_DELETED: 'traineeDeleted',
   },
+  errorMessage: 'something went wrong',
 };

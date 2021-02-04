@@ -1,26 +1,70 @@
-import UserRepository from '../../service/user';
 import constants from '../../lib/constants';
 import pubsub from '../../pubsub';
 
 const { subcriptions: { TRAINEE_ADDED, TRAINEE_UPDATED, TRAINEE_DELETED } } = constants;
 export default {
-  createTrainee: (parent, args) => {
-    const { user } = args;
-    const addedTrainee = UserRepository.createUser(user);
-    pubsub.publish(TRAINEE_ADDED, { traineeAdded: addedTrainee });
-    return addedTrainee;
+  createTrainee: async (parent, args, context) => {
+    try {
+      const { dataSources: { traineeApi } } = context;
+      const {
+        user: {
+          name, email, role, password,
+        },
+      } = args;
+      const response = await traineeApi.create({
+        name, email, role, password,
+      });
+      pubsub.publish(TRAINEE_ADDED, { traineeAdded: response });
+      return response;
+    } catch (err) {
+      if (!err.extensions) {
+        return {
+          message: constants.errorMessage,
+        };
+      }
+      const { extensions: { response: { body } } } = err;
+      return body;
+    }
   },
-  updateTrainee: (parent, args) => {
-    const { id, role, name } = args;
-    const updatedTrainee = UserRepository.updateUser(id, role, name);
-    pubsub.publish(TRAINEE_UPDATED, { traineeUpdated: updatedTrainee });
-    return updatedTrainee;
+  updateTrainee: async (parent, args, context) => {
+    try {
+      const { dataSources: { traineeApi } } = context;
+      const { user: { id, name, email } } = args;
+      const response = await traineeApi.update({
+        originalId: id,
+        dataToUpdate: {
+          name,
+          email,
+        },
+      });
+      pubsub.publish(TRAINEE_UPDATED, { traineeUpdated: response });
+      return response;
+    } catch (err) {
+      if (!err.extensions) {
+        return {
+          message: constants.errorMessage,
+        };
+      }
+      const { extensions: { response: { body } } } = err;
+      return body;
+    }
   },
-  deleteTrainee: (parent, args) => {
-    const { id } = args;
-    const deletedTraineeId = UserRepository.deleteUser(id);
-    pubsub.publish(TRAINEE_DELETED, { traineeDeleted: deletedTraineeId });
-    return deletedTraineeId;
+  deleteTrainee: async (parent, args, context) => {
+    try {
+      const { dataSources: { traineeApi } } = context;
+      const { id } = args;
+      const deletedTrainee = await traineeApi.deleteTrainee(id);
+      pubsub.publish(TRAINEE_DELETED, { traineeDeleted: deletedTrainee });
+      return deletedTrainee;
+    } catch (err) {
+      if (!err.extensions) {
+        return {
+          message: constants.errorMessage,
+        };
+      }
+      const { extensions: { response: { body } } } = err;
+      return body;
+    }
   },
 
 };

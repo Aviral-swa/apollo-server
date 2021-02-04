@@ -1,11 +1,24 @@
 type User {
-  id: ID!
   name: String!
   email: String!
-  role: String!
+  role: String
+  originalId: ID!
+  createdAt: String!
 }
 
 input Payload {
   email: String!
   password: String!
+}
+
+type TokenData {
+  generated_token: String!
+}
+
+type LoginResponse {
+  message: String
+  data: TokenData
+  error: String
+  timestamp: String
+  status: String
 }

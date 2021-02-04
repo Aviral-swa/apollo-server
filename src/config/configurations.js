@@ -7,5 +7,4 @@ const configuration = {
   service_url: process.env.SERVICE_URL,
 };
 Object.freeze(configuration);
-console.log(`config object is frozen: ${Object.isFrozen(configuration)}`);
 export default configuration;
