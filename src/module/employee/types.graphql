@@ -5,8 +5,9 @@ input createEmployeeInput {
 }
 
 type employee {
-  name: String!
-  role: String!
+  message: String
+  name: String
+  role: String
   parent: String
   ancestors: [String]
 
