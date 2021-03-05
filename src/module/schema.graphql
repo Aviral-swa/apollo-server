@@ -1,6 +1,7 @@
 type Query {
   getMyProfile: User!
   getAllTrainees(options: getAllOptions): getAllUsers
+  getEmployees: [employee]
 }
 
 type Mutation {
@@ -8,6 +9,7 @@ type Mutation {
   updateTrainee(user: updateUserInput): trainee!
   deleteTrainee(id:ID!): deletedTrainee!
   loginUser(payload: Payload!): LoginResponse!
+  createEmployee(employee: createEmployeeInput): employee!
 }
 
 type Subscription {

@@ -1,0 +1,14 @@
+input createEmployeeInput {
+  name: String!
+  role: String!
+  parent: String
+}
+
+type employee {
+  message: String
+  name: String
+  role: String
+  parent: String
+  ancestors: [String]
+
+}
