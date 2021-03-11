@@ -1,0 +1,34 @@
+input updatePermissionInput {
+  originalId: ID!
+  resources: updatedPermissions!
+}
+
+input updatedPermissions {
+  trainee: [String]
+  employee: [String]
+  permissions: [String]
+}
+
+type updatedPermission {
+  trainee: [String]
+  employee: [String]
+  permissions: [String]
+}
+
+type permissionupdateResponse {
+  message: String!
+  data: Permissions
+  status: String!
+}
+
+type permissiongetResponse {
+  message: String!
+  data: [Permissions]
+  status: String!
+}
+
+type Permissions {
+  email: String!
+  resources: updatedPermission!
+  originalId: ID!
+}

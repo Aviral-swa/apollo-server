@@ -3,6 +3,7 @@ import path from 'path';
 import { getMyProfile, loginMutation } from './user';
 import { getAll, crudMutations, subcriptions } from './trainee';
 import { employeeGetQuery, employeeMutation } from './employee';
+import { permissionMutation, permissionQuery } from './permission';
 
 const dirname = path.resolve();
 
@@ -16,11 +17,13 @@ export default {
       ...getMyProfile,
       ...getAll,
       ...employeeGetQuery,
+      ...permissionQuery,
     },
     Mutation: {
       ...loginMutation,
       ...crudMutations,
       ...employeeMutation,
+      ...permissionMutation,
     },
     Subscription: subcriptions,
   },

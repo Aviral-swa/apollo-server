@@ -1,23 +1,23 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
 import { configuration } from '../config';
 
-class EmployeeApi extends RESTDataSource {
+class PermissionApi extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = `${configuration.service_url}/employee`;
+    this.baseURL = `${configuration.service_url}/permission`;
   }
 
   willSendRequest(request) {
     request.headers.set('Authorization', this.context.token);
   }
 
-  getAll(payload) {
-    return this.get('', payload);
+  getAll() {
+    return this.get('');
   }
 
-  create(payload) {
-    return this.post('', payload);
+  update(payload) {
+    return this.put('', payload);
   }
 }
 
-export default EmployeeApi;
+export default PermissionApi;
