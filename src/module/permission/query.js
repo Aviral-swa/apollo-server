@@ -4,7 +4,8 @@ export default {
   getPermission: async (parent, args, { dataSources }) => {
     try {
       const { permissionApi } = dataSources;
-      const response = await permissionApi.getAll();
+      const { id: { email } } = args;
+      const response = await permissionApi.getAll({ email });
       return response;
     } catch (err) {
       if (!err.extensions) {

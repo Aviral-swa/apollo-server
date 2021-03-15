@@ -11,8 +11,8 @@ class PermissionApi extends RESTDataSource {
     request.headers.set('Authorization', this.context.token);
   }
 
-  getAll() {
-    return this.get('');
+  getAll(payload) {
+    return this.get('', payload);
   }
 
   update(payload) {

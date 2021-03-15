@@ -9,6 +9,10 @@ input updatedPermissions {
   permissions: [String]
 }
 
+input getOne {
+  email: String
+}
+
 type updatedPermission {
   trainee: [String]
   employee: [String]

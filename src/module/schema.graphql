@@ -2,7 +2,7 @@ type Query {
   getMyProfile: User!
   getAllTrainees(options: getAllOptions): getAllUsers
   getEmployees: [employee]
-  getPermission: permissiongetResponse
+  getPermission(id: getOne): permissiongetResponse
 }
 
 type Mutation {
