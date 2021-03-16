@@ -1,22 +1,10 @@
 input updatePermissionInput {
   originalId: ID!
-  resources: updatedPermissions!
-}
-
-input updatedPermissions {
-  trainee: [String]
-  employee: [String]
-  permissions: [String]
+  resources: JSON!
 }
 
 input getOne {
   email: String
-}
-
-type updatedPermission {
-  trainee: [String]
-  employee: [String]
-  permissions: [String]
 }
 
 type permissionupdateResponse {
@@ -33,6 +21,16 @@ type permissiongetResponse {
 
 type Permissions {
   email: String!
-  resources: updatedPermission!
+  resources: JSON!
   originalId: ID!
+}
+
+scalar JSON
+
+type MyObject {
+myField: JSON
+}
+
+type Query {
+objects: [MyObject]
 }
