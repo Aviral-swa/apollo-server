@@ -1,6 +1,7 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { createServer } from 'http';
+import Redis from 'ioredis';
 import Schema from './module';
 import {
   UserApi, TraineeApi, EmployeeApi, PermissionApi,
@@ -10,6 +11,7 @@ class Server {
   constructor(config) {
     this.config = config;
     this.app = express();
+    this.redis = new Redis();
   }
 
   bootstrap() {
@@ -19,6 +21,7 @@ class Server {
   }
 
   setupApollo(schema) {
+    const { redis } = this;
     this.server = new ApolloServer({
       ...schema,
       dataSources: () => ({
@@ -31,9 +34,10 @@ class Server {
         if (req) {
           return {
             token: req.headers.authorization,
+            redis,
           };
         }
-        return {};
+        return { redis };
       },
     });
     this.httpServer = createServer(this.app);
