@@ -2,10 +2,12 @@ import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { createServer } from 'http';
 import Redis from 'ioredis';
+import { RedisCache } from 'apollo-server-cache-redis';
 import Schema from './module';
 import {
   UserApi, TraineeApi, EmployeeApi, PermissionApi,
 } from './datasource';
+import constants from './lib/constants';
 
 class Server {
   constructor(config) {
@@ -15,6 +17,7 @@ class Server {
   }
 
   bootstrap() {
+    this.redis.del(constants.permissionCacheKey);
     this.setupApollo(Schema);
     this.setupRoutes();
     return this;
@@ -39,6 +42,10 @@ class Server {
         }
         return { redis };
       },
+      cache: new RedisCache({
+        port: 6379,
+        host: '127.0.0.1',
+      }),
     });
     this.httpServer = createServer(this.app);
     this.server.installSubscriptionHandlers(this.httpServer);
