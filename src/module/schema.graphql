@@ -17,5 +17,6 @@ type Mutation {
 type Subscription {
   traineeAdded: trainee!
   traineeUpdated: trainee!
-  traineeDeleted: deletedTrainee!  
+  traineeDeleted: deletedTrainee!
+  updatePermissions: permissionupdateResponse!
 }

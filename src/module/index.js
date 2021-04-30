@@ -2,9 +2,9 @@ import { fileLoader, mergeTypes } from 'merge-graphql-schemas';
 import path from 'path';
 import GraphqlJson from 'graphql-type-json';
 import { getMyProfile, loginMutation } from './user';
-import { getAll, crudMutations, subcriptions } from './trainee';
+import { getAll, crudMutations, traineeSubcriptions } from './trainee';
 import { employeeGetQuery, employeeMutation } from './employee';
-import { permissionMutation, permissionQuery } from './permission';
+import { permissionMutation, permissionQuery, permissionSub } from './permission';
 
 const dirname = path.resolve();
 
@@ -27,7 +27,10 @@ export default {
       ...employeeMutation,
       ...permissionMutation,
     },
-    Subscription: subcriptions,
+    Subscription: {
+      ...traineeSubcriptions,
+      ...permissionSub,
+    },
   },
   typeDefs,
 };
