@@ -2,7 +2,9 @@ import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { createServer } from 'http';
 import Schema from './module';
-import { UserApi, TraineeApi } from './datasource';
+import {
+  UserApi, TraineeApi, EmployeeApi, PermissionApi,
+} from './datasource';
 
 class Server {
   constructor(config) {
@@ -22,6 +24,8 @@ class Server {
       dataSources: () => ({
         userApi: new UserApi(),
         traineeApi: new TraineeApi(),
+        employeeApi: new EmployeeApi(),
+        permissionApi: new PermissionApi(),
       }),
       context: ({ req }) => {
         if (req) {

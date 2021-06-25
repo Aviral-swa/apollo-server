@@ -1,0 +1,36 @@
+input updatePermissionInput {
+  originalId: ID!
+  resources: JSON!
+}
+
+input getOne {
+  email: String
+}
+
+type permissionupdateResponse {
+  message: String!
+  data: Permissions
+  status: String!
+}
+
+type permissiongetResponse {
+  message: String!
+  data: [Permissions]
+  status: String!
+}
+
+type Permissions {
+  email: String!
+  resources: JSON!
+  originalId: ID!
+}
+
+scalar JSON
+
+type MyObject {
+myField: JSON
+}
+
+type Query {
+objects: [MyObject]
+}
